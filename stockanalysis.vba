@@ -91,6 +91,7 @@ Sub StockAnalysis():
                 ws.Cells(Ticker_LastRow + 1, 9).Value = StockTicker
                 
                 ws.Cells(Ticker_LastRow + 1, 10).Value = StockPriceChange
+                ' If the Price Change is nothing, its still considered not being a positive move
                 If (StockPriceChange <= 0#) Then
                     ws.Cells(Ticker_LastRow + 1, 10).Interior.ColorIndex = 3
                 Else
@@ -98,6 +99,7 @@ Sub StockAnalysis():
                 End If
                 
                 ws.Cells(Ticker_LastRow + 1, 11).Value = StockPercentChange
+                ' If the Percent Change is nothing, its still considered not being a positive move
                 If (StockPercentChange > 1#) Then
                     ws.Cells(Ticker_LastRow + 1, 11).Interior.ColorIndex = 4
                 Else
