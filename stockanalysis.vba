@@ -91,17 +91,17 @@ Sub StockAnalysis():
                 ws.Cells(Ticker_LastRow + 1, 9).Value = StockTicker
                 
                 ws.Cells(Ticker_LastRow + 1, 10).Value = StockPriceChange
-                If (StockPriceChange < 0.1) Then
+                If (StockPriceChange <= 0#) Then
                     ws.Cells(Ticker_LastRow + 1, 10).Interior.ColorIndex = 3
                 Else
                     ws.Cells(Ticker_LastRow + 1, 10).Interior.ColorIndex = 4
                 End If
                 
                 ws.Cells(Ticker_LastRow + 1, 11).Value = StockPercentChange
-                If (StockPercentChange < 1#) Then
-                    ws.Cells(Ticker_LastRow + 1, 11).Interior.ColorIndex = 3
-                Else
+                If (StockPercentChange > 1#) Then
                     ws.Cells(Ticker_LastRow + 1, 11).Interior.ColorIndex = 4
+                Else
+                    ws.Cells(Ticker_LastRow + 1, 11).Interior.ColorIndex = 3
                 End If
                 
                 ws.Cells(Ticker_LastRow + 1, 12).Value = StockTotalVolume
