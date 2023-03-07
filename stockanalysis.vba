@@ -105,9 +105,7 @@ Sub StockAnalysis():
                 Else
                     ws.Cells(Ticker_LastRow + 1, 11).Interior.ColorIndex = 3
                 End If
-                ' Further editing the values for human readability
-                ws.Cells(Ticker_LastRow + 1, 11).Value = Str((StockPercentChange - 1) * 100) + "%"
-                
+                                
                 ws.Cells(Ticker_LastRow + 1, 12).Value = StockTotalVolume
                 
                 'Reinitialize Open Price to New Value and Volume to Zero
@@ -156,8 +154,15 @@ Sub StockAnalysis():
             End If
         
         Next j
+        
+        ' Finalize Summary Table For Human Readability
+        ws.Cells(2, 17).Value = Str((ws.Cells(2, 17).Value - 1) * 100) & "%"
+        ws.Cells(3, 17).Value = Str((ws.Cells(3, 17).Value - 1) * 100) & "%"
+        
+        For k = 2 To Ticker_LastRow
+            ws.Cells(k, 11).Value = Str((ws.Cells(k, 11).Value - 1) * 100) + "%"
+        Next k
     
     Next ws
         
-
 End Sub
